@@ -1,23 +1,38 @@
-<div class="px-4 md:px-10 mx-auto w-full mt-10">
+<div class="px-4 md:px-8 mx-10 w-full mt-2">
     <div class="flex flex-wrap">
         <div class="w-full lg:w-12/12 px-4">
-            <div
-                class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
+            <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
                 <div class="rounded-t bg-white mb-0 px-6 py-6">
                     <div class="text-center flex justify-between">
                         <h6 class="text-blueGray-700 text-xl font-bold">
                             Ajouter un emballage
                         </h6>
                         <button
+                                
                             class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                             type="button">
                             Annuler
                         </button>
                     </div>
-                </div>
+                    @livewire('livewire-ui-modal')
+                </div> 
                 <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
-                    <form>
-                        <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
+                    <div>  
+                        <div class="flex flex-wrap my-4">
+                            <div class="w-full lg:w-12/12 px-4">
+                                <div class="relative w-full">
+                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                        htmlfor="grid-password">
+                                        Operation Number 
+                                    </label>
+                                    <input type="text"
+                                        wire:model="operation_number"
+                                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
+                                        rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">    
+                                </div>
+                            </div>
+                        </div>
+                        <h6 class="text-blueGray-400 text-sm mb-6 font-bold uppercase">
                             Packaging Informations
                         </h6>
                         <div class="flex flex-wrap">
@@ -25,33 +40,48 @@
                                 <div class="relative w-full mb-3">
                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                                         htmlfor="grid-password">
-                                        Packagin Name
+                                        Packaging Name
                                     </label>
-                                    <input type="text"
-                                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                        >
+                                    <select type="text"
+                                        wire:model='packaging_name'
+                                            class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
+                                            rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                        <option value=""></option>
+                                        <option value="Bottle">Bottle</option>
+                                        <option value="Jar">Jar</option>
+                                        <option value="Pots">Pots</option>
+                                        <option value="Jug">Jug</option>
+                                        <option value="Poches">Poches</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="w-full lg:w-6/12 px-4">
                                 <div class="relative w-full mb-3">
                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                                    htmlfor="grid-password">
-                                    Packaging Type (Glass, plastic)
-                                </label>
-                                <input type="text"
-                                    class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                    >
+                                        htmlfor="grid-password">
+                                        Packaging Type 
+                                    </label>
+                                    <select type="text"
+                                            wire:model='packaging_type'
+                                            class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
+                                            rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                        <option value=""></option>
+                                        <option value="Glass">Glass</option>
+                                        <option value="Plastic">Plastic</option>
+                                        <option value="Metallic">Metallic</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="w-full lg:w-6/12 px-4">
                                 <div class="relative w-full mb-3">
-                                <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                                    htmlfor="grid-password">
-                                    Packaging Color (Black, clear)
-                                </label>
-                                <input type="text"
-                                    class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                    >
+                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                        htmlfor="grid-password">
+                                        Packaging Color Ex: (Black, clear...)
+                                    </label>
+                                    <input type="text"
+                                        wire:model='packaging_color'
+                                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow 
+                                        focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                                 </div>
                             </div>
                             <div class="w-full lg:w-6/12 px-4">
@@ -60,10 +90,25 @@
                                         htmlfor="grid-password">
                                         Packaging Volume
                                     </label>
-                                    <input type="text"
-                                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                        >
+                                    <div class="flex">
+                                        <input type="text"
+                                                wire:model='packaging_volume'
+                                            class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
+                                            rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 mr-4">
+                                            <select type="text"
+                                                wire:model='p_volume'
+                                            class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
+                                            rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                                <option value=""></option>
+                                                <option value="Gramme">Gramme</option>
+                                                <option value="Kg">Kg</option>
+                                                <option value="Litre">Litre</option>
+                                                <option value="Ml">Ml</option>
+                                                
+                                        </select>
                                     </div>
+                                    
+                                </div>
                             </div>
                         </div>
                         <div class="flex flex-wrap">
@@ -73,11 +118,482 @@
                                         htmlfor="grid-password">
                                         Provider
                                     </label>
-                                    <input type="text"
-                                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                        >
+                                    <select type="text"
+                                        wire:model='p_provider'
+                                    class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
+                                    rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                        <option value=""></option>
+                                        <option value=""></option>
+                                        <option value=""></option>
+                                        <option value=""></option>
+                                    </select>
                                 </div>
-                            </div>  
+                                <span wire:click="toggle_provider_packaging" class="text-blue-600 cursor-pointer text-sm underline">
+                                    <i class="fal fa-plus "></i> Add New Packaging Provider
+                                </span>  
+                            </div>
+                            <div class="w-full lg:w-4/12 px-4">
+                                <div class="relative w-full mb-3">
+                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                        htmlfor="grid-password">
+                                        Price
+                                    </label>
+                                    <input type="text" placeholder="DH" wire:model='p_price'
+                                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm 
+                                        shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                </div>
+                            </div>
+                            <div class="w-full lg:w-4/12 px-4">
+                                <div class="relative w-full mb-3">
+                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                        htmlfor="grid-password">
+                                         Date
+                                    </label>
+                                    <input type="date" wire:model='p_date'
+                                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded 
+                                        text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                </div>
+                            </div>
+                        </div>
+                         {{--  --}}
+                         @if($add_provider_packaging)
+                             <div class="border-2 mt-2 border-blueGray-500 p-2">
+                            <h6 class="text-blueGray-400 text-sm mb-6 font-bold uppercase">
+                                Provider Informations
+                            </h6>
+                            <div class="flex flex-wrap">
+                                <div class="w-full lg:w-4/12 px-4">
+                                    <div class="relative w-full mb-3">
+                                        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                            htmlfor="grid-password">
+                                            Company Name
+                                        </label>
+                                        <input type="text"
+                                            wire:model='p_company_name'
+                                                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
+                                                rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    </div>
+                                </div>
+                                <div class="w-full lg:w-4/12 px-4">
+                                    <div class="relative w-full mb-3">
+                                        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                            htmlfor="grid-password">
+                                            Contact Name
+                                        </label>
+                                        <input type="text"
+                                            wire:model='p_contact_name'
+                                                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
+                                                rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    </div>
+                                </div>
+                                <div class="w-full lg:w-4/12 px-4">
+                                    <div class="relative w-full mb-3">
+                                        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                            htmlfor="grid-password">
+                                            Addresse
+                                        </label>
+                                        <input type="text"
+                                            wire:model='p_adresse'
+                                                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
+                                                rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    </div>
+                                </div>
+                                <div class="w-full lg:w-4/12 px-4">
+                                    <div class="relative w-full mb-3">
+                                        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                            htmlfor="grid-password">
+                                            Phone 1
+                                        </label>
+                                        <input type="text"
+                                            wire:model='p_phone_1'
+                                                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
+                                                rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    </div>
+                                    
+                                </div>
+                                <div class="w-full lg:w-4/12 px-4">
+                                    <div class="relative w-full mb-3">
+                                        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                            htmlfor="grid-password">
+                                            Phone 2
+                                        </label>
+                                        <input type="text"
+                                            wire:model='p_phone_2'
+                                                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
+                                                rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    </div>
+                                    
+                                </div>
+                                <div class="w-full lg:w-4/12 px-4">
+                                    <div class="relative w-full mb-3">
+                                        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                            htmlfor="grid-password">
+                                            email
+                                        </label>
+                                        <input type="email"
+                                            wire:model='p_email'
+                                                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
+                                                rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    </div>
+                                </div>
+                                <div class="rounded-t  mb-0 px-6 py-6">
+                                    <div class="text-center flex justify-between">
+                                        <button   
+                                            class="bg-green-600 text-blue-400 active:bg-blueGray-500 font-bold uppercase text-xs px-4 py-2 
+                                                        rounded shadow hover:shadow-md outline-none 
+                                                        focus:outline-none mr-1 ease-linear transition-all duration-150"
+                                            type="button">
+                                            Save
+                                        </button>
+                                        <button   
+                                        class="bg-red-500 text-white active:bg-blueGray-500 font-bold uppercase text-xs px-4 py-2 
+                                                    rounded shadow hover:shadow-md outline-none 
+                                                    focus:outline-none mr-1 ease-linear transition-all duration-150"
+                                        type="button">
+                                        Cancel
+                                    </button>
+                                    </div>
+                                </div>
+                               
+                            </div>
+                        </div> 
+                         @endif
+                        
+                        {{--  --}}
+                        <div class="flex flex-wrap">
+                            <div class="w-full lg:w-12/12 mt-6 px-4">
+                                <div class="relative w-full mb-3">
+                                    <div class="mb-5 text-center">
+                                        @isset($image_packaging)
+                                        <div
+                                            class="mx-auto w-16 h-16 mb-2 border rounded-full relative bg-gray-100 mb-4 shadow-inset">
+                                            <img id="image" class="object-cover w-full h-16 rounded-full"
+                                                src={{$image_packaging->temporaryUrl()}} />
+                                        </div>
+                                        @endisset
+                                        <label for="fileInput1" type="button"
+                                            class="cursor-pointer inine-flex justify-between items-center focus:outline-none border py-2 px-4 rounded-lg shadow-sm text-left text-gray-600 bg-white hover:bg-gray-100 font-medium">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                class="inline-flex flex-shrink-0 w-6 h-6 -mt-1 mr-1" viewBox="0 0 24 24"
+                                                stroke-width="2" stroke="currentColor" fill="none"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <rect x="0" y="0" width="24" height="24" stroke="none"></rect>
+                                                <path
+                                                    d="M5 7h1a2 2 0 0 0 2 -2a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1a2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+                                                <circle cx="12" cy="13" r="3" />
+                                            </svg>
+                                            importez une image
+                                        </label>
+                                        <div class="mx-auto w-48 text-gray-500 text-xs text-center mt-1">Appuiyer pour
+                                            ajouter une photo</div>
+                                        <input id="fileInput1" accept="image/*" class="hidden" type="file"
+                                            wire:model="image_packaging">
+                                        @error('image_packaging')
+                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="mt-6 border-b-1 border-blueGray-300">
+                        <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
+                            Accessory Informations
+                        </h6>
+                        <div class="flex flex-wrap">
+                            <div class="w-full lg:w-6/12 px-4">
+                                <div class="relative w-full mb-3">
+                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                        htmlfor="grid-password">
+                                        Accessory Name
+                                    </label>
+                                    <select type="text" wire:model='accessory_name'
+                                    class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
+                                    rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                        <option value=""></option>
+                                        <option value="Pipette">Pipette</option>
+                                        <option value="Spray">Spray</option>
+                                        <option value="Pum">Pump</option>
+                                        <option value="Cover">Cover</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="w-full lg:w-6/12 px-4">
+                                <div class="relative w-full mb-3">
+                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                        htmlfor="grid-password">
+                                        Accessory Type (Glass, plastic)
+                                    </label>
+                                    <select type="text" wire:model='accessory_type'
+                                    class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
+                                    rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                        <option value=""></option>
+                                        <option value="Glass">Glass</option>
+                                        <option value="Plastic">Plastic</option>
+                                        <option value="Metallic">Metallic</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="w-full lg:w-6/12 px-4">
+                                <div class="relative w-full mb-3">
+                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                        htmlfor="grid-password">
+                                        Accessory Color (Black, clear)
+                                    </label>
+                                    <input type="text" wire:model='accessory_color'
+                                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow 
+                                        focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                </div>
+                            </div>
+                            <div class="w-full lg:w-6/12 px-4">
+                                <div class="relative w-full mb-3">
+                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                        htmlfor="grid-password">
+                                        Is the Same Provider ?
+                                    </label>
+                                    <div class="w-full pt-4">
+                                        <label class="inline-flex items-center cursor-pointer"><input
+                                                name="same_provider" type="radio" wire:model="same_provider" value="1"
+                                                class="form-radio appearance-none ml-1 w-5 h-5 ease-linear transition-all duration-150 border border-blueGray-400 rounded-full checked:bg-blueGray-800 checked:border-blueGray-800 focus:border-blueGray-400"><span
+                                                class="ml-2 text-sm font-semibold text-blueGray-700">Yes</span>
+                                            </label>
+                                            <label class="inline-flex items-center cursor-pointer"><input
+                                                name="not_same_provider" type="radio" wire:model="same_provider" value="0"
+                                                class="form-radio appearance-none ml-1 w-5 h-5 ease-linear transition-all duration-150 border border-blueGray-400 rounded-full checked:bg-blueGray-800 checked:border-blueGray-800 focus:border-blueGray-400"><span
+                                                class="ml-2 text-sm font-semibold text-blueGray-700">No</span>
+                                            </label>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                           
+                        <div class="flex flex-wrap">
+                        @if (!$same_provider) 
+                            <div class="w-full lg:w-4/12 px-4">
+                                <div class="relative w-full mb-3">
+                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                        htmlfor="grid-password">
+                                        Provider
+                                    </label>
+                                    <select type="text" wire:mode="a_provider"
+                                                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
+                                                rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                        <option value=""></option>
+                                        <option value=""></option>
+                                        <option value=""></option>
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                                <span wire:click="toggle_provider_accessory" class="text-blue-600 cursor-pointer text-sm underline">
+                                    <i class="fal fa-plus "></i> Add New Accessories Provider
+                                </span> 
+                            </div>
+                          
+                        @endif
+                          <div class="w-full lg:w-4/12 px-4">
+                                <div class="relative w-full mb-3">
+                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                        htmlfor="grid-password">
+                                        Price
+                                    </label>
+                                    <input type="text" placeholder="Dh" wire:model='a_price'
+                                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm 
+                                        shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                </div>
+                            </div>
+                            <div class="w-full lg:w-4/12 px-4">
+                                <div class="relative w-full mb-3">
+                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                        htmlfor="grid-password">
+                                         Date
+                                    </label>
+                                    <input type="date" wir:model='a_date'
+                                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded 
+                                        text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                </div>
+                            </div>
+                        </div> 
+                          {{--  --}}
+                          @if ($add_provider_accessory)
+                          <div class="border-2 mt-2 border-blueGray-500 p-2">
+                         <h6 class="text-blueGray-400 text-sm mb-6 font-bold uppercase">
+                            Accessories Provider Informations
+                         </h6>
+                         <div class="flex flex-wrap">
+                             <div class="w-full lg:w-4/12 px-4">
+                                 <div class="relative w-full mb-3">
+                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                         htmlfor="grid-password">
+                                         Company Name
+                                     </label>
+                                     <input type="text"
+                                         wire:model='a_company_name'
+                                             class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
+                                             rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                 </div>
+                             </div>
+                             <div class="w-full lg:w-4/12 px-4">
+                                 <div class="relative w-full mb-3">
+                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                         htmlfor="grid-password">
+                                         Contact Name
+                                     </label>
+                                     <input type="text"
+                                         wire:model='a_contact_name'
+                                             class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
+                                             rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                 </div>
+                             </div>
+                             <div class="w-full lg:w-4/12 px-4">
+                                 <div class="relative w-full mb-3">
+                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                         htmlfor="grid-password">
+                                         Addresse
+                                     </label>
+                                     <input type="text"
+                                         wire:model='a_adresse'
+                                             class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
+                                             rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                 </div>
+                             </div>
+                             <div class="w-full lg:w-4/12 px-4">
+                                 <div class="relative w-full mb-3">
+                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                         htmlfor="grid-password">
+                                         Phone 1
+                                     </label>
+                                     <input type="text"
+                                         wire:model='a_phone_1'
+                                             class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
+                                             rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                 </div>
+                                 
+                             </div>
+                             <div class="w-full lg:w-4/12 px-4">
+                                 <div class="relative w-full mb-3">
+                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                         htmlfor="grid-password">
+                                         Phone 2
+                                     </label>
+                                     <input type="text"
+                                         wire:model='a_phone_2'
+                                             class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
+                                             rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                 </div>
+                                 
+                             </div>
+                             <div class="w-full lg:w-4/12 px-4">
+                                 <div class="relative w-full mb-3">
+                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                         htmlfor="grid-password">
+                                         email
+                                     </label>
+                                     <input type="email"
+                                         wire:model='a_email'
+                                             class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
+                                             rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                 </div>
+                             </div>
+                             <div class="rounded-t  mb-0 px-6 py-6">
+                                 <div class="text-center flex justify-between">
+                                     <button   
+                                         class="bg-green-600 text-blue-400 active:bg-blueGray-500 font-bold uppercase text-xs px-4 py-2 
+                                                     rounded shadow hover:shadow-md outline-none 
+                                                     focus:outline-none mr-1 ease-linear transition-all duration-150"
+                                         type="button">
+                                         Save
+                                     </button>
+                                     <button   
+                                     class="bg-red-500 text-white active:bg-blueGray-500 font-bold uppercase text-xs px-4 py-2 
+                                                 rounded shadow hover:shadow-md outline-none 
+                                                 focus:outline-none mr-1 ease-linear transition-all duration-150"
+                                     type="button">
+                                     Cancel
+                                 </button>
+                                 </div>
+                             </div>
+                            
+                         </div>
+                     </div> 
+                      @endif
+                     
+                     {{--  --}}
+                        <div class="flex flex-wrap">
+                            <div class="w-full lg:w-12/12 mt-6 px-4">
+                                <div class="relative w-full mb-3">
+                                    <div class="mb-5 text-center">
+                                        @isset($image_accessory)
+                                        <div
+                                            class="mx-auto w-16 h-16 mb-2 border rounded-full relative bg-gray-100 mb-4 shadow-inset">
+                                            <img id="image" class="object-cover w-full h-16 rounded-full"
+                                                src={{$image_accessory->temporaryUrl()}} />
+                                        </div>
+                                        @endisset
+                                        <label for="fileInput2" type="button"
+                                            class="cursor-pointer inine-flex justify-between items-center focus:outline-none border py-2 px-4 rounded-lg shadow-sm text-left text-gray-600 bg-white hover:bg-gray-100 font-medium">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                class="inline-flex flex-shrink-0 w-6 h-6 -mt-1 mr-1" viewBox="0 0 24 24"
+                                                stroke-width="2" stroke="currentColor" fill="none"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <rect x="0" y="0" width="24" height="24" stroke="none"></rect>
+                                                <path
+                                                    d="M5 7h1a2 2 0 0 0 2 -2a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1a2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+                                                <circle cx="12" cy="13" r="3" />
+                                            </svg>
+                                            importez une image
+                                        </label>
+                                        <div class="mx-auto w-48 text-gray-500 text-xs text-center mt-1">Appuiyer pour
+                                            ajouter une photo</div>
+                                        <input id="fileInput2" accept="image/*" class="hidden" type="file"
+                                            wire:model.prevent="image_accessory">
+                                        @error('image_accessory')
+                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="mt-6 border-b-1 border-blueGray-300">
+                        <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
+                            Labeling
+                        </h6>
+                        <div class="flex flex-wrap">
+                            <div class="w-full lg:w-12/12 px-4">
+                                <div class="relative w-full mb-3">
+                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                        htmlfor="grid-password">
+                                        Labeling Type (Label,Screen Printed)
+                                    </label>
+                                    <select type="text" wire:model='labeling_type'
+                                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
+                                        rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                        <option value=""></option>
+                                        <option value="Screen Printing">Screen Printing</option>
+                                        <option value="Sticker Label">Sticker Label</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap">
+                            <div class="w-full lg:w-4/12 px-4">
+                                <div class="relative w-full mb-3">
+                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                        htmlfor="grid-password">
+                                        Provider
+                                    </label>
+                                    <select type="text" wire:model='l_provider'
+                                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
+                                        rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                        <option value=""></option>
+                                        <option value=""></option>
+                                        <option value=""></option>
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                                <span wire:click="toggle_provider_labeling" class="text-blue-600 cursor-pointer text-sm underline">
+                                    <i class="fal fa-plus "></i> Add New Labeling Provider
+                                </span> 
+                            </div>
                             <div class="w-full lg:w-4/12 px-4">
                                 <div class="relative w-full mb-3">
                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
@@ -85,128 +601,182 @@
                                         Price
                                     </label>
                                     <input type="text"
-                                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                        >
+                                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                                 </div>
-                            </div> 
+                            </div>
                             <div class="w-full lg:w-4/12 px-4">
                                 <div class="relative w-full mb-3">
                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                                         htmlfor="grid-password">
-                                        Received Date
+                                         Date
                                     </label>
-                                    <input type="text"
+                                    <input type="date"
                                         class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded 
                                         text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                                 </div>
-                            </div> 
+                            </div>
                         </div>
+                             {{--  --}}
+                             @if ($add_provider_labeling)
+                             <div class="border-2 mt-2 border-blueGray-500 p-2">
+                            <h6 class="text-blueGray-400 text-sm mb-6 font-bold uppercase">
+                                Provider Informations
+                            </h6>
+                            <div class="flex flex-wrap">
+                                <div class="w-full lg:w-4/12 px-4">
+                                    <div class="relative w-full mb-3">
+                                        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                            htmlfor="grid-password">
+                                            Company Name
+                                        </label>
+                                        <input type="text"
+                                            wire:model='company_name'
+                                                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
+                                                rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    </div>
+                                </div>
+                                <div class="w-full lg:w-4/12 px-4">
+                                    <div class="relative w-full mb-3">
+                                        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                            htmlfor="grid-password">
+                                            Contact Name
+                                        </label>
+                                        <input type="text"
+                                            wire:model='contact_name'
+                                                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
+                                                rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    </div>
+                                </div>
+                                <div class="w-full lg:w-4/12 px-4">
+                                    <div class="relative w-full mb-3">
+                                        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                            htmlfor="grid-password">
+                                            Addresse
+                                        </label>
+                                        <input type="text"
+                                            wire:model='phone'
+                                                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
+                                                rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    </div>
+                                </div>
+                                <div class="w-full lg:w-4/12 px-4">
+                                    <div class="relative w-full mb-3">
+                                        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                            htmlfor="grid-password">
+                                            Phone 1
+                                        </label>
+                                        <input type="text"
+                                            wire:model='phone'
+                                                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
+                                                rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    </div>
+                                    
+                                </div>
+                                <div class="w-full lg:w-4/12 px-4">
+                                    <div class="relative w-full mb-3">
+                                        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                            htmlfor="grid-password">
+                                            Phone 2
+                                        </label>
+                                        <input type="text"
+                                            wire:model='phone'
+                                                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
+                                                rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    </div>
+                                    
+                                </div>
+                                <div class="w-full lg:w-4/12 px-4">
+                                    <div class="relative w-full mb-3">
+                                        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                            htmlfor="grid-password">
+                                            email
+                                        </label>
+                                        <input type="email"
+                                            wire:model='email'
+                                                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
+                                                rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    </div>
+                                </div>
+                                <div class="rounded-t  mb-0 px-6 py-6">
+                                    <div class="text-center flex justify-between">
+                                        <button   
+                                            class="bg-green-600 text-blue-400 active:bg-blueGray-500 font-bold uppercase text-xs px-4 py-2 
+                                                        rounded shadow hover:shadow-md outline-none 
+                                                        focus:outline-none mr-1 ease-linear transition-all duration-150"
+                                            type="button">
+                                            Save
+                                        </button>
+                                        <button   
+                                        class="bg-red-500 text-white active:bg-blueGray-500 font-bold uppercase text-xs px-4 py-2 
+                                                    rounded shadow hover:shadow-md outline-none 
+                                                    focus:outline-none mr-1 ease-linear transition-all duration-150"
+                                        type="button">
+                                        Cancel
+                                    </button>
+                                    </div>
+                                </div>
+                               
+                            </div>
+                        </div> 
+                         @endif
+                        
+                        {{--  --}}
                         <div class="flex flex-wrap">
                             <div class="w-full lg:w-12/12 mt-6 px-4">
                                 <div class="relative w-full mb-3">
-                                  <div class="mb-5 text-center">
-                                    @isset($image_packaging)
-                                         <div class="mx-auto w-16 h-16 mb-2 border rounded-full relative bg-gray-100 mb-4 shadow-inset">
-                                          <img id="image" class="object-cover w-full h-16 rounded-full" src={{$image_packaging->temporaryUrl()}} />
-                                       </div>
-                                    @endisset
-                                       <label
-                                          for="fileInput"
-                                          type="button"
-                                          class="cursor-pointer inine-flex justify-between items-center focus:outline-none border py-2 px-4 rounded-lg shadow-sm text-left text-gray-600 bg-white hover:bg-gray-100 font-medium">
-                                          <svg xmlns="http://www.w3.org/2000/svg" class="inline-flex flex-shrink-0 w-6 h-6 -mt-1 mr-1" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                              <rect x="0" y="0" width="24" height="24" stroke="none"></rect>
-                                              <path d="M5 7h1a2 2 0 0 0 2 -2a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1a2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
-                                              <circle cx="12" cy="13" r="3" />
-                                          </svg>
-                                          importez une image
-                                      </label>
-                                      <div class="mx-auto w-48 text-gray-500 text-xs text-center mt-1">Appuiyer pour ajouter une photo</div>
-                                          <input
-                                       id="fileInput" accept="image/*"
-                                        class="hidden" type="file"
-                                        wire:model="image_packaging">
-                                        @error('image_packaging')
+                                    <div class="mb-5 text-center">
+                                        @isset($image_labeling)
+                                        <div
+                                            class="mx-auto w-16 h-16 mb-2 border rounded-full relative bg-gray-100 mb-4 shadow-inset">
+                                            <img id="image" class="object-cover w-full h-16 rounded-full"
+                                                src={{$image_labeling->temporaryUrl()}} />
+                                        </div>
+                                        @endisset
+                                        <label for="fileInput3" type="button"
+                                            class="cursor-pointer inine-flex justify-between items-center focus:outline-none border py-2 px-4 rounded-lg shadow-sm text-left text-gray-600 bg-white hover:bg-gray-100 font-medium">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                class="inline-flex flex-shrink-0 w-6 h-6 -mt-1 mr-1" viewBox="0 0 24 24"
+                                                stroke-width="2" stroke="currentColor" fill="none"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <rect x="0" y="0" width="24" height="24" stroke="none"></rect>
+                                                <path
+                                                    d="M5 7h1a2 2 0 0 0 2 -2a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1a2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+                                                <circle cx="12" cy="13" r="3" />
+                                            </svg>
+                                            importez une image
+                                        </label>
+                                        <div class="mx-auto w-48 text-gray-500 text-xs text-center mt-1">Appuiyer pour
+                                            ajouter une photo</div>
+                                        <input id="fileInput3" accept="image/*" class="hidden" type="file"
+                                            wire:model="image_labeling">
+                                        @error('image_labeling')
                                         <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                                         @enderror
-                                  </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <hr class="mt-6 border-b-1 border-blueGray-300">
-                        <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
-                            Contact Information
-                        </h6>
                         <div class="flex flex-wrap">
                             <div class="w-full lg:w-12/12 px-4">
-                                <div class="relative w-full mb-3">
-                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                                        htmlfor="grid-password">
-                                        Address
-                                    </label>
-                                    <input type="text"
-                                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                        value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
+                                <div class="relative w-full mx-12">
+                                    <div class="text-center mt-6 ">
+                                        <button
+                                          class="bg-blueGray-800  text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+                                          type="submit"
+                                        >
+                                         Enregistre
+                                        </button>
+                                      </div>
                                 </div>
-                            </div>
-                            <div class="w-full lg:w-4/12 px-4">
-                                <div class="relative w-full mb-3">
-                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                                        htmlfor="grid-password">
-                                        City
-                                    </label>
-                                    <input type="email"
-                                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                        value="New York">
-                                </div>
-                            </div>
-                            <div class="w-full lg:w-4/12 px-4">
-                                <div class="relative w-full mb-3">
-                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                                        htmlfor="grid-password">
-                                        Country
-                                    </label>
-                                    <input type="text"
-                                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                        value="United States">
-                                </div>
-                            </div>
-                            <div class="w-full lg:w-4/12 px-4">
-                                <div class="relative w-full mb-3">
-                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                                        htmlfor="grid-password">
-                                        Postal Code
-                                    </label>
-                                    <input type="text"
-                                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                        value="Postal Code">
-                                </div>
-                            </div>
+                              </div>
                         </div>
-                        <hr class="mt-6 border-b-1 border-blueGray-300">
-                        <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
-                            About Me
-                        </h6>
-                        <div class="flex flex-wrap">
-                            <div class="w-full lg:w-12/12 px-4">
-                                <div class="relative w-full mb-3">
-                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                                        htmlfor="grid-password">
-                                        About me
-                                    </label>
-                                    <textarea type="text"
-                                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                        rows="4">                                A beautiful UI Kit and Admin for JavaScript &amp; Tailwind CSS. It is Free
-                                    and Open Source.
-                                  </textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+                    </div>
                 </div>
+                
             </div>
         </div>
         
+
     </div>
-  
 </div>
+

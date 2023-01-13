@@ -9,6 +9,8 @@ class ProviderLebeling extends Model
 {
     use HasFactory;
     protected $fillable=[
+        'provider_id',
+        'labeling_id',
         'price',
         'date_received',
     ];

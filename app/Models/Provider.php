@@ -11,10 +11,11 @@ class Provider extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'full_name',
-        'code_provider',
+        'company_name',
+        'contact_name',
         'adresse',
-        'telephone',
+        'phone_1',
+        'phone_2',
         'email',
     ];
 

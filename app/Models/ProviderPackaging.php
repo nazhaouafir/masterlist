@@ -9,6 +9,8 @@ class ProviderPackaging extends Model
 {
     use HasFactory;
     protected $fillable=[
+        'provider_id',
+        'packaging_id',
         'price',
         'date_received',
     ];

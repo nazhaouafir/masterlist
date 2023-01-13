@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Accessory;
 use App\Models\Labeling;
 use App\Models\Provider; 
+use App\Models\Operation;
 class Packaging extends Model
 {
     use HasFactory;
@@ -26,6 +27,9 @@ class Packaging extends Model
    }
    public  function providers(){
     return $this->belongsToMany(Provider::class, 'provider_packagings');
+   }
+   public  function operations(){
+    return $this->belongsToMany(Operation::class, 'operation_packagings');
    }
 
 }
