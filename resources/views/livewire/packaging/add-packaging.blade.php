@@ -28,7 +28,11 @@
                                     <input type="text"
                                         wire:model="operation_number"
                                         class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
-                                        rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">    
+                                        rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">   
+                                    @error('operation_number')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
+                                         
                                 </div>
                             </div>
                         </div>
@@ -53,6 +57,9 @@
                                         <option value="Jug">Jug</option>
                                         <option value="Poches">Poches</option>
                                     </select>
+                                    @error('packaging_name')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="w-full lg:w-6/12 px-4">
@@ -70,6 +77,9 @@
                                         <option value="Plastic">Plastic</option>
                                         <option value="Metallic">Metallic</option>
                                     </select>
+                                    @error('packaging_type')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="w-full lg:w-6/12 px-4">
@@ -82,6 +92,9 @@
                                         wire:model='packaging_color'
                                         class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow 
                                         focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    @error('packaging_color')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="w-full lg:w-6/12 px-4">
@@ -103,10 +116,17 @@
                                                 <option value="Gramme">Gramme</option>
                                                 <option value="Kg">Kg</option>
                                                 <option value="Litre">Litre</option>
-                                                <option value="Ml">Ml</option>
-                                                
+                                                <option value="Ml">Ml</option>    
                                         </select>
+                                   
                                     </div>
+                                    @error('packaging_volume')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
+
+                                    @error('p_volume')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                     
                                 </div>
                             </div>
@@ -115,18 +135,22 @@
                             <div class="w-full lg:w-4/12 px-4">
                                 <div class="relative w-full mb-3">
                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                                        htmlfor="grid-password">
-                                        Provider
-                                    </label>
-                                    <select type="text"
-                                        wire:model='p_provider'
+                                    htmlfor="grid-password">
+                                    Packaging Provider
+                                </label>
+                                <select type="text" wire:model='p_provider'
                                     class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
                                     rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
-                                        <option value=""></option>
-                                        <option value=""></option>
-                                        <option value=""></option>
-                                        <option value=""></option>
-                                    </select>
+                                    <option value="">Select Your Provider</option>
+                                    @forelse ($providers as $item)
+                                        <option value="{{$item->id}}">{{$item->company_name}}</option>
+                                    @empty
+                                        
+                                    @endforelse
+                                </select>
+                                @error('p_provider')
+                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
                                 </div>
                                 <span wire:click="toggle_provider_packaging" class="text-blue-600 cursor-pointer text-sm underline">
                                     <i class="fal fa-plus "></i> Add New Packaging Provider
@@ -141,6 +165,9 @@
                                     <input type="text" placeholder="DH" wire:model='p_price'
                                         class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm 
                                         shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                        @error('p_price')
+                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
                                 </div>
                             </div>
                             <div class="w-full lg:w-4/12 px-4">
@@ -152,6 +179,9 @@
                                     <input type="date" wire:model='p_date'
                                         class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded 
                                         text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                @error('p_date')
+                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
                                 </div>
                             </div>
                         </div>
@@ -172,6 +202,9 @@
                                             wire:model='p_company_name'
                                                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
                                                 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                                @error('p_company_name')
+                                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                                @enderror
                                     </div>
                                 </div>
                                 <div class="w-full lg:w-4/12 px-4">
@@ -184,6 +217,9 @@
                                             wire:model='p_contact_name'
                                                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
                                                 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                        @error('p_contact_name')
+                                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="w-full lg:w-4/12 px-4">
@@ -196,6 +232,9 @@
                                             wire:model='p_adresse'
                                                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
                                                 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                     @error('p_adresse')
+                                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="w-full lg:w-4/12 px-4">
@@ -208,6 +247,9 @@
                                             wire:model='p_phone_1'
                                                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
                                                 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                     @error('p_phone_1')
+                                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                     
                                 </div>
@@ -221,7 +263,10 @@
                                             wire:model='p_phone_2'
                                                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
                                                 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
-                                    </div>
+                                        @error('p_phone_2')
+                                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
+                                            </div>
                                     
                                 </div>
                                 <div class="w-full lg:w-4/12 px-4">
@@ -234,11 +279,15 @@
                                             wire:model='p_email'
                                                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
                                                 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    @error('p_email')
+                                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="rounded-t  mb-0 px-6 py-6">
                                     <div class="text-center flex justify-between">
-                                        <button   
+                                        <button 
+                                              wire:click.prevent='save_packaging_provider'
                                             class="bg-green-600 text-blue-400 active:bg-blueGray-500 font-bold uppercase text-xs px-4 py-2 
                                                         rounded shadow hover:shadow-md outline-none 
                                                         focus:outline-none mr-1 ease-linear transition-all duration-150"
@@ -246,6 +295,7 @@
                                             Save
                                         </button>
                                         <button   
+                                        wire.click.prevent='toggle_provider_packaging'
                                         class="bg-red-500 text-white active:bg-blueGray-500 font-bold uppercase text-xs px-4 py-2 
                                                     rounded shadow hover:shadow-md outline-none 
                                                     focus:outline-none mr-1 ease-linear transition-all duration-150"
@@ -312,9 +362,12 @@
                                         <option value=""></option>
                                         <option value="Pipette">Pipette</option>
                                         <option value="Spray">Spray</option>
-                                        <option value="Pum">Pump</option>
+                                        <option value="Pump">Pump</option>
                                         <option value="Cover">Cover</option>
                                     </select>
+                            @error('accessory_name')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
                                 </div>
                             </div>
                             <div class="w-full lg:w-6/12 px-4">
@@ -332,6 +385,9 @@
                                         <option value="Metallic">Metallic</option>
                                     </select>
                                 </div>
+                                @error('accessory_type')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div class="w-full lg:w-6/12 px-4">
                                 <div class="relative w-full mb-3">
@@ -342,6 +398,9 @@
                                     <input type="text" wire:model='accessory_color'
                                         class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow 
                                         focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    @error('accessory_color')
+                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="w-full lg:w-6/12 px-4">
@@ -375,14 +434,19 @@
                                         htmlfor="grid-password">
                                         Provider
                                     </label>
-                                    <select type="text" wire:mode="a_provider"
-                                                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
-                                                rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
-                                        <option value=""></option>
-                                        <option value=""></option>
-                                        <option value=""></option>
-                                        <option value=""></option>
+                                    <select type="text" wire:model='a_provider'
+                                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
+                                        rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                        <option value="">Select Your Provider</option>
+                                        @forelse ($providers as $item)
+                                            <option value="{{$item->id}}">{{$item->company_name}}</option>
+                                        @empty
+                                            
+                                        @endforelse
                                     </select>
+                                    @error('a_provider')
+                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <span wire:click="toggle_provider_accessory" class="text-blue-600 cursor-pointer text-sm underline">
                                     <i class="fal fa-plus "></i> Add New Accessories Provider
@@ -399,6 +463,10 @@
                                     <input type="text" placeholder="Dh" wire:model='a_price'
                                         class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm 
                                         shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+
+                                        @error('a_price')
+                                         <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
                                 </div>
                             </div>
                             <div class="w-full lg:w-4/12 px-4">
@@ -407,9 +475,13 @@
                                         htmlfor="grid-password">
                                          Date
                                     </label>
-                                    <input type="date" wir:model='a_date'
+                                    <input type="date" wire:model='a_date'
                                         class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded 
                                         text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    
+                                        @error('a_date')
+                                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
                                 </div>
                             </div>
                         </div> 
@@ -430,6 +502,9 @@
                                          wire:model='a_company_name'
                                              class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
                                              rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    @error('a_company_name')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                  </div>
                              </div>
                              <div class="w-full lg:w-4/12 px-4">
@@ -442,6 +517,9 @@
                                          wire:model='a_contact_name'
                                              class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
                                              rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    @error('a_contact_name')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                  </div>
                              </div>
                              <div class="w-full lg:w-4/12 px-4">
@@ -454,6 +532,9 @@
                                          wire:model='a_adresse'
                                              class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
                                              rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    @error('a_adresse')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                  </div>
                              </div>
                              <div class="w-full lg:w-4/12 px-4">
@@ -466,6 +547,9 @@
                                          wire:model='a_phone_1'
                                              class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
                                              rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    @error('a_phone_1')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                  </div>
                                  
                              </div>
@@ -479,6 +563,9 @@
                                          wire:model='a_phone_2'
                                              class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
                                              rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                 @error('a_phone_2')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                  </div>
                                  
                              </div>
@@ -492,11 +579,15 @@
                                          wire:model='a_email'
                                              class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
                                              rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    @error('a_email')
+                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                  </div>
                              </div>
                              <div class="rounded-t  mb-0 px-6 py-6">
                                  <div class="text-center flex justify-between">
-                                     <button   
+                                     <button  
+                                            wire:click.prevent='save_accessory_provider' 
                                          class="bg-green-600 text-blue-400 active:bg-blueGray-500 font-bold uppercase text-xs px-4 py-2 
                                                      rounded shadow hover:shadow-md outline-none 
                                                      focus:outline-none mr-1 ease-linear transition-all duration-150"
@@ -504,10 +595,11 @@
                                          Save
                                      </button>
                                      <button   
-                                     class="bg-red-500 text-white active:bg-blueGray-500 font-bold uppercase text-xs px-4 py-2 
-                                                 rounded shadow hover:shadow-md outline-none 
-                                                 focus:outline-none mr-1 ease-linear transition-all duration-150"
-                                     type="button">
+                                        wire:click="toggle_provider_accessory"
+                                        class="bg-red-500 text-white active:bg-blueGray-500 font-bold uppercase text-xs px-4 py-2 
+                                                    rounded shadow hover:shadow-md outline-none 
+                                                    focus:outline-none mr-1 ease-linear transition-all duration-150"
+                                        type="button">
                                      Cancel
                                  </button>
                                  </div>
@@ -567,10 +659,13 @@
                                     <select type="text" wire:model='labeling_type'
                                         class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
                                         rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
-                                        <option value=""></option>
+                                        <option value="">Select Labeling Type</option>
                                         <option value="Screen Printing">Screen Printing</option>
                                         <option value="Sticker Label">Sticker Label</option>
                                     </select>
+                                    @error('labeling_type')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -579,16 +674,21 @@
                                 <div class="relative w-full mb-3">
                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                                         htmlfor="grid-password">
-                                        Provider
+                                        Labeling Provider
                                     </label>
                                     <select type="text" wire:model='l_provider'
                                         class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
                                         rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                                         <option value=""></option>
-                                        <option value=""></option>
-                                        <option value=""></option>
-                                        <option value=""></option>
+                                        @forelse ($providers as $item)
+                                            <option value="{{$item->id}}">{{$item->company_name}}</option>
+                                        @empty
+                                            
+                                        @endforelse
                                     </select>
+                                    @error('l_provider')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <span wire:click="toggle_provider_labeling" class="text-blue-600 cursor-pointer text-sm underline">
                                     <i class="fal fa-plus "></i> Add New Labeling Provider
@@ -601,7 +701,12 @@
                                         Price
                                     </label>
                                     <input type="text"
-                                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    wire:model='l_price'
+                                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow
+                                         focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                         @error('l_provider')
+                                         <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                         @enderror
                                 </div>
                             </div>
                             <div class="w-full lg:w-4/12 px-4">
@@ -611,8 +716,12 @@
                                          Date
                                     </label>
                                     <input type="date"
+                                        wire:model='l_date'
                                         class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded 
                                         text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    @error('l_date')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -630,9 +739,12 @@
                                             Company Name
                                         </label>
                                         <input type="text"
-                                            wire:model='company_name'
+                                            wire:model='l_company_name'
                                                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
                                                 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                        @error('l_company_name')
+                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="w-full lg:w-4/12 px-4">
@@ -642,9 +754,12 @@
                                             Contact Name
                                         </label>
                                         <input type="text"
-                                            wire:model='contact_name'
+                                            wire:model='l_contact_name'
                                                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
                                                 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                        @error('l_contact_name')
+                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="w-full lg:w-4/12 px-4">
@@ -654,9 +769,12 @@
                                             Addresse
                                         </label>
                                         <input type="text"
-                                            wire:model='phone'
+                                            wire:model='l_adresse'
                                                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
                                                 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    @error('l_adresse')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                     </div>
                                 </div>
                                 <div class="w-full lg:w-4/12 px-4">
@@ -666,9 +784,12 @@
                                             Phone 1
                                         </label>
                                         <input type="text"
-                                            wire:model='phone'
+                                            wire:model='l_phone_1'
                                                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
                                                 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                                @error('l_phone_1')
+                                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                                @enderror
                                     </div>
                                     
                                 </div>
@@ -679,9 +800,12 @@
                                             Phone 2
                                         </label>
                                         <input type="text"
-                                            wire:model='phone'
+                                            wire:model='l_phone_2'
                                                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
                                                 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                                @error('l_phone_2')
+                                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                                @enderror
                                     </div>
                                     
                                 </div>
@@ -692,14 +816,18 @@
                                             email
                                         </label>
                                         <input type="email"
-                                            wire:model='email'
+                                            wire:model='l_email'
                                                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
                                                 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                                @error('l_email')
+                                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                                @enderror
                                     </div>
                                 </div>
                                 <div class="rounded-t  mb-0 px-6 py-6">
                                     <div class="text-center flex justify-between">
                                         <button   
+                                            wire:click.prevent="save_labeling_provider"
                                             class="bg-green-600 text-blue-400 active:bg-blueGray-500 font-bold uppercase text-xs px-4 py-2 
                                                         rounded shadow hover:shadow-md outline-none 
                                                         focus:outline-none mr-1 ease-linear transition-all duration-150"
@@ -707,6 +835,7 @@
                                             Save
                                         </button>
                                         <button   
+                                        wire:click="toggle_provider_labeling"
                                         class="bg-red-500 text-white active:bg-blueGray-500 font-bold uppercase text-xs px-4 py-2 
                                                     rounded shadow hover:shadow-md outline-none 
                                                     focus:outline-none mr-1 ease-linear transition-all duration-150"
@@ -761,9 +890,9 @@
                                 <div class="relative w-full mx-12">
                                     <div class="text-center mt-6 ">
                                         <button
+                                        wire:click.prevent='create_product'
                                           class="bg-blueGray-800  text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
-                                          type="submit"
-                                        >
+                                          type="submit">
                                          Enregistre
                                         </button>
                                       </div>

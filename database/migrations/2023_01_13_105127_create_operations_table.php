@@ -15,6 +15,7 @@ class CreateOperationsTable extends Migration
     {
         Schema::create('operations', function (Blueprint $table) {
             $table->id();
+            $table->string('operation_number')->nullable();
             $table->timestamps();
         });
     }

@@ -15,8 +15,10 @@ class Packaging extends Model
         'name',
         'type',
         'volume',
+        'mode_volume',
         'color',
-        'price'
+        'price',
+        'image_packaging'
     ];
 
    public  function accessory(){

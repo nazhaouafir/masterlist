@@ -17,6 +17,7 @@ class CreateLabelingsTable extends Migration
             $table->id();
             $table->string('type')->nullable();
             $table->double('price')->nullable();
+            $table->string('image_labeling')->nullable();
             $table->timestamps();
         });
     }

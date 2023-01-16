@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAccessoriesTable extends Migration
+class CreatePackagingLabelingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateAccessoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('accessories', function (Blueprint $table) {
+        Schema::create('packaging_labelings', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->string('color')->nullable();
-            $table->string('type')->nullable();
-            $table->double('price')->nullable();
-            $table->string('image_accessory')->nullable();
+            $table->foreignId('labeling_id')->constrained('labelings');
+            $table->foreignId('packaging_id')->constrained('packagings');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateAccessoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('accessories');
+        Schema::dropIfExists('packaging_labelings');
     }
 }

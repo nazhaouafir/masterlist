@@ -19,6 +19,7 @@ class CreateProviderLebelingsTable extends Migration
             $table->foreignId('labeling_id')->constrained('labelings');
             $table->double('price')->nullable();
             $table->date('date_received')->nullable();
+            $table->string('image_packaging')->nullable();
             $table->timestamps();
         });
     }

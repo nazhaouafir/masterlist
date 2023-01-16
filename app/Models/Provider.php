@@ -22,9 +22,11 @@ class Provider extends Model
     public  function packagings(){
         return $this->belongsToMany(Packaging::class, 'provider_packagings');
     }
+
     public  function labelings(){
-        return $this->belongsToMany(Labeling::class, 'provider_packagings');
+        return $this->belongsToMany(Labeling::class, 'provider_lebelings');
     }
+    
     public  function accessories(){
         return $this->belongsToMany(Accessory::class, 'provider_accessories');
     }
