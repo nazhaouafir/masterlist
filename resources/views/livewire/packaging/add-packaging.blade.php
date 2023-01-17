@@ -1,4 +1,4 @@
-<div class="px-4 md:px-8 mx-10 w-full mt-2">
+<div class="px-4 md:px-8 mx-10 w-full mt-8">
     <div class="flex flex-wrap">
         <div class="w-full lg:w-12/12 px-4">
             <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
@@ -548,7 +548,7 @@
                                              class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
                                              rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                                     @error('a_phone_1')
-                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                                     @enderror
                                  </div>
                                  
@@ -637,7 +637,7 @@
                                         <div class="mx-auto w-48 text-gray-500 text-xs text-center mt-1">Appuiyer pour
                                             ajouter une photo</div>
                                         <input id="fileInput2" accept="image/*" class="hidden" type="file"
-                                            wire:model.prevent="image_accessory">
+                                            wire:model="image_accessory">
                                         @error('image_accessory')
                                         <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                                         @enderror
@@ -704,7 +704,7 @@
                                     wire:model='l_price'
                                         class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow
                                          focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
-                                         @error('l_provider')
+                                         @error('l_price')
                                          <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                                          @enderror
                                 </div>

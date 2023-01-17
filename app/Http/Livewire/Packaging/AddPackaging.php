@@ -146,11 +146,13 @@ class AddPackaging extends Component
             'packaging_color'=> 'required',
             'p_price'=>'required',
             'image_packaging'=> 'required|image|max:2048',
-            'p_email'=> 'required|email',
-            'p_date'=> 'required|date|before:today',
-            'p_phone_1'=>'required',
-            'p_phone_2'=>'required',
-            'p_adresse'=>'required',
+
+            'p_email'=> 'nullable|email',
+            'p_date'=> 'nullable|date|before:today',
+            'p_phone_1'=>'nullable',
+            'p_phone_2'=>'nullable',
+            'p_adresse'=>'nullable',
+
             'p_provider'=>'required',
             'p_volume'=>'required',
             'accessory_name' => 'required',
@@ -158,21 +160,23 @@ class AddPackaging extends Component
             'accessory_color'=> 'required',
             'a_price'=>'required',
             'image_accessory'=> 'required|image|max:2048',
-            'a_email'=> 'required|email',
-            'a_date'=> 'required|date|before:today',
-            'a_phone_1'=>'required',
-            'a_phone_2'=>'required',
-            'a_adresse'=>'required',
+
+            'a_email'=> 'nullable|email',
+            'a_date'=> 'nullable|date',
+            'a_phone_1'=>'nullable',
+            'a_phone_2'=>'nullable',
+            'a_adresse'=>'nullable',
 
             'labeling_type'=>'required',
             'l_price'=>'required',
             'image_labeling'=> 'required|image|max:2048',
-            'l_date'=>'required',
-            'l_email'=> 'required|email',
-            'l_date'=> 'required|date|before:today',
-            'l_phone_1'=>'required',
-            'l_phone_2'=>'required',
-            'l_adresse'=>'required',
+
+            'l_email'=> 'nullable|email',
+            'l_date'=> 'nullable|date',
+            'l_phone_1'=>'nullable',
+            'l_phone_2'=>'nullable',
+            'l_adresse'=>'nullable',
+
             'l_provider'=>'required',
             
         ]);
@@ -181,14 +185,17 @@ class AddPackaging extends Component
             'operation_number'=> $this->operation_number
         ]);
         ///////////////////////
+
         $packaging = Packaging::create([
             'name'=>$this->packaging_name,
             'type'=>$this->packaging_type,
             'volume'=>$this->packaging_volume,
+            'mode_volume'=>$this->p_volume,
             'color'=>$this->packaging_color,
             'price'=>$this->p_price,
             'image_packaging'=>$this->image_packaging? $this->image_packaging->store('packagings', 'public') : null,
         ]);
+
         $operation_packagings = OperationPackaging::create([
             'operation_id'=>$operation->id,
             'packaging_id'=>$packaging->id
@@ -199,14 +206,16 @@ class AddPackaging extends Component
                   ->attach($packaging->id, 
                     ['price'=>$this->p_price, 
                      'date_received'=>$this->p_date]);
+                 
+
                      ///////////////////////////
 
         $accessory = Accessory::create([
-        'name'=>$this->accessory_name,
-        'type'=>$this->accessory_type,
-        'color'=>$this->accessory_color,
-        'price'=>$this->a_price,
-        'image_accessory'=>$this->image_accessory? $this->image_accessory->store('accessories', 'public') : null,
+            'name'=>$this->accessory_name,
+            'type'=>$this->accessory_type,
+            'color'=>$this->accessory_color,
+            'price'=>$this->a_price,
+            'image_accessory'=>$this->image_accessory? $this->image_accessory->store('accessories', 'public') : null,
         ]);
 
         $packaging_accesssory = PackagingAcessory::create([
@@ -257,7 +266,7 @@ class AddPackaging extends Component
             $this->toggle_provider_labeling();
             $this->providers = Provider::with('packagings','labelings','accessories')->get();
             $this->l_provider=  $provider->id;
-            $this->alert('success', 'Provider Created !', [
+            $this->alert('success', 'Product Created !', [
                 'position' => 'center',
                 'timer' => 3000,
                 'toast' => true,
