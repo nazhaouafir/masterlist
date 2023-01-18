@@ -20,7 +20,7 @@ class Accessory extends Model
         return $this->hasMany(packaging::class);
     }
     public  function providers(){
-        return $this->belongsToMany(Provider::class, 'provider_accessories');
+        return $this->belongsToMany(Provider::class, 'provider_accessories')->withPivot('price','date_received');
        }
 
 }

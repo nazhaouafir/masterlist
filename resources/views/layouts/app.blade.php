@@ -14,28 +14,14 @@
     </head>
 
     <body class="font-sans antialiased">
-
         <div id="root">
-
             @include('layouts.navigation')
-            <!-- Page Heading -->
-        
-            
-            <!-- Page Content -->
             <div class="relative md:ml-64 bg-blueGray-50">
-                <header class="bg-white shadow">
-                    <div class=" mx-auto">
-                        {{ $header }}
-                    </div>
-                </header>
+                @livewire('statistics')
                 @include('layouts.nav')
                  {{ $slot }} 
             </div>
-            
-               
-            
         </div>
-
             @livewireScripts
         <script src="{{asset('js/app.js')}}"></script>
         <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>  

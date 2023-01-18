@@ -8,7 +8,7 @@
                     <i class="fas fa-bars"></i>
                 </button>
                 <a class="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
-                    href="../../index.html">
+                    href="l">
                     MasterList
                 </a>
                 <ul class="md:hidden items-center flex flex-wrap list-none">
@@ -25,9 +25,15 @@
                                 class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Something
                                 else here</a>
                             <div class="h-0 my-2 border border-solid border-blueGray-100"></div>
-                            <a href="#pablo"
-                                class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Seprated
-                                link</a>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+            
+                                <x-responsive-nav-link :href="route('logout')"
+                                        onclick="event.preventDefault();
+                                                    this.closest('form').submit();">
+                                    {{ __('Log Out') }}
+                                </x-responsive-nav-link>
+                            </form>
                         </div>
                     </li>
                     <li class="inline-block relative">
@@ -50,9 +56,15 @@
                                 class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Something
                                 else here</a>
                             <div class="h-0 my-2 border border-solid border-blueGray-100"></div>
-                            <a href="#pablo"
-                                class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Seprated
-                                link</a>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+            
+                                <x-responsive-nav-link :href="route('logout')"
+                                        onclick="event.preventDefault();
+                                                    this.closest('form').submit();">
+                                    {{ __('Log Out') }}
+                                </x-responsive-nav-link>
+                            </form>
                         </div>
                     </li>
                 </ul>
@@ -92,10 +104,10 @@
 
                     <ul class="md:flex-col md:min-w-full flex flex-col list-none">
                         <li class="items-center">
-                            <a href="./dashboard.html"
+                            <a href="{{route('dashboard')}}"
                                 class="text-xs uppercase py-3 font-bold block text-pink-500 hover:text-pink-600">
                                 <i class="fas fa-tv mr-2 text-sm opacity-75"></i>
-                                Dashboard
+                                Search Packagings
                             </a>
                         </li>
 
@@ -103,7 +115,7 @@
                             <a href="./settings.html"
                                 class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500">
                                 <i class="fas fa-tools mr-2 text-sm text-blueGray-300"></i>
-                                Settings
+                                Search Providers
                             </a>
                         </li>
 
@@ -111,15 +123,21 @@
                             <a href="./tables.html"
                                 class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500">
                                 <i class="fas fa-table mr-2 text-sm text-blueGray-300"></i>
-                                Tables
+                                Search Ingredients
                             </a>
                         </li>
-
                         <li class="items-center">
-                            <a href="./maps.html"
+                            <a href=""
+                                class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500">
+                                <i class="fas fa-table mr-2 text-sm text-blueGray-300"></i>
+                                Our Operations
+                            </a>
+                        </li>
+                        <li class="items-center">
+                            <a href="/packagingsList"
                                 class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500">
                                 <i class="fas fa-map-marked mr-2 text-sm text-blueGray-300"></i>
-                                Maps
+                                Packagingd List
                             </a>
                         </li>
                     </ul>
@@ -135,10 +153,10 @@
 
                     <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
                         <li class="items-center">
-                            <a href="../auth/login.html"
+                            <a href="/add-packaging"
                                 class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block">
                                 <i class="fas fa-fingerprint text-blueGray-300 mr-2 text-sm"></i>
-                                Login
+                                Add Packaging Details
                             </a>
                         </li>
 
@@ -146,7 +164,14 @@
                             <a href="../auth/register.html"
                                 class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block">
                                 <i class="fas fa-clipboard-list text-blueGray-300 mr-2 text-sm"></i>
-                                Register
+                                Add Accessory
+                            </a>
+                        </li>
+                        <li class="items-center">
+                            <a href="../auth/register.html"
+                                class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block">
+                                <i class="fas fa-clipboard-list text-blueGray-300 mr-2 text-sm"></i>
+                                Add Labeling
                             </a>
                         </li>
                     </ul>

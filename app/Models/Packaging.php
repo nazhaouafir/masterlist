@@ -21,14 +21,14 @@ class Packaging extends Model
         'image_packaging'
     ];
 
-   public  function accessory(){
-    return $this->hasMany(Accessory::class);
+   public  function accessories(){
+    return $this->belongsToMany(Accessory::class,'packaging_acessories');
    }
    public  function labelings(){
-    return $this->hasMany(Labeling::class);
+    return $this->belongsToMany(Labeling::class,'packaging_labelings');
    }
    public  function providers(){
-    return $this->belongsToMany(Provider::class, 'provider_packagings');
+    return $this->belongsToMany(Provider::class, 'provider_packagings')->withPivot('price','date_received');
    }
    public  function operations(){
     return $this->belongsToMany(Operation::class, 'operation_packagings');

@@ -3,6 +3,8 @@
 use App\Http\Livewire\Packaging\AddPackaging;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Packaging;
+use App\Http\Livewire\Packaging\PackagingsList;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,3 +28,4 @@ require __DIR__.'/auth.php';
 
 
 Route::get('/add-packaging', AddPackaging::class);
+Route::get('/packagingsList', PackagingsList::class);

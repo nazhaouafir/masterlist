@@ -19,6 +19,6 @@ class Labeling extends Model
         return $this->hasMany(packaging::class);
     }
     public  function providers(){
-        return $this->belongsToMany(Provider::class, 'provider_lebelings');
+        return $this->belongsToMany(Provider::class, 'provider_lebelings')->withPivotValue('price','date_received');
        }
 }

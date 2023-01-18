@@ -46,7 +46,13 @@ class AddPackaging extends Component
         $this->p_email='';
 
     }
-    
+    public function updated(){
+            if($this->same_provider == 1 && $this->p_provider){
+                $this->a_provider = $this->p_provider;
+            } else{
+                $this->a_provider = '';
+            }
+    }
     public function toggle_provider_accessory(){
 
         $this->add_provider_accessory= !$this->add_provider_accessory;
@@ -60,7 +66,14 @@ class AddPackaging extends Component
     }
 
     public function save_packaging_provider(){
-
+        $this->validate([
+            'p_company_name'=>'required',
+            'p_contact_name'=>'required',
+            'p_adresse'=>'required',
+            'p_phone_1'=>'required',
+            'p_phone_2'=>'required',
+            'p_email'=>'required',
+        ]);
         $provider = Provider::create([
             'company_name'=>$this->p_company_name,
             'contact_name'=>$this->p_contact_name,
@@ -251,7 +264,14 @@ class AddPackaging extends Component
            ]);
     }
     public function save_labeling_provider(){
-
+        $this->validate([
+            'l_company_name'=>'required',
+            'l_contact_name'=>'required',
+            'l_adresse'=>'required',
+            'l_phone_1'=>'required',
+            'l_phone_2'=>'required',
+            'l_email'=>'required',
+        ]);
         $provider = Provider::create([
             'company_name'=>$this->l_company_name,
             'contact_name'=>$this->l_contact_name,
@@ -274,7 +294,14 @@ class AddPackaging extends Component
         }
     }
     public function save_accessory_provider(){
-
+        $this->validate([
+            'a_company_name'=>'required',
+            'a_contact_name'=>'required',
+            'a_adresse'=>'required',
+            'a_phone_1'=>'required',
+            'a_phone_2'=>'required',
+            'a_email'=>'required',
+        ]);
         $provider = Provider::create([
             'company_name'=>$this->a_company_name,
             'contact_name'=>$this->a_contact_name,
@@ -319,6 +346,6 @@ class AddPackaging extends Component
 
     public function render()
     {
-        return view('livewire.packaging.add-packaging');
+        return view('livewire.packaging.add-packaging')->layout('layouts.app');
     }
 }
