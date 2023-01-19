@@ -18,6 +18,7 @@ class Packaging extends Model
         'mode_volume',
         'color',
         'price',
+        'shape',
         'image_packaging'
     ];
 
@@ -28,7 +29,7 @@ class Packaging extends Model
     return $this->belongsToMany(Labeling::class,'packaging_labelings');
    }
    public  function providers(){
-    return $this->belongsToMany(Provider::class, 'provider_packagings')->withPivot('price','date_received');
+    return $this->belongsToMany(Provider::class, 'provider_packagings')->withPivot('price', 'date_received');
    }
    public  function operations(){
     return $this->belongsToMany(Operation::class, 'operation_packagings');

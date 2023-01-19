@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Livewire\Accessories\AddAccessory;
+use App\Http\Livewire\Labelings\AddLabelings;
 use App\Http\Livewire\Packaging\AddPackaging;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Packaging;
 use App\Http\Livewire\Packaging\PackagingsList;
+use App\Http\Livewire\Provider\ProvidersList;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +31,6 @@ require __DIR__.'/auth.php';
 
 
 Route::get('/add-packaging', AddPackaging::class);
+
 Route::get('/packagingsList', PackagingsList::class);
+Route::get('/providers-list', ProvidersList::class);

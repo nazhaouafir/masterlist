@@ -5,7 +5,7 @@
                 <div class="rounded-t bg-white mb-0 px-6 py-6">
                     <div class="text-center flex justify-between">
                         <h6 class="text-blueGray-700 text-xl font-bold">
-                            Ajouter un emballage
+                            Add New Packaging
                         </h6>
                         <button
                                 
@@ -83,19 +83,35 @@
                                 </div>
                             </div>
                             <div class="w-full lg:w-6/12 px-4">
-                                <div class="relative w-full mb-3">
-                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                                        htmlfor="grid-password">
-                                        Packaging Color Ex: (Black, clear...)
-                                    </label>
-                                    <input type="text"
-                                        wire:model='packaging_color'
-                                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow 
-                                        focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
-                                    @error('packaging_color')
-                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                                    @enderror
+                                <div class="flex">
+                                    <div class="relative w-full mb-3 ">
+                                        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                            htmlfor="grid-password">
+                                            Packaging Color Ex: (Black, clear...)
+                                        </label>
+                                        <input type="text"
+                                            wire:model='packaging_color'
+                                            class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow 
+                                            focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                        @error('packaging_color')
+                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="relative w-full mb-3 ml-2">
+                                        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                            htmlfor="grid-password">
+                                            Packaging Shape
+                                        </label>
+                                        <input type="text"
+                                            wire:model='packaging_shape'
+                                            class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow 
+                                            focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                        @error('packaging_shape')
+                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
+                                    </div>
                                 </div>
+                              
                             </div>
                             <div class="w-full lg:w-6/12 px-4">
                                 <div class="relative w-full mb-3">

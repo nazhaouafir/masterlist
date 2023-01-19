@@ -20,6 +20,7 @@ class CreatePackagingsTable extends Migration
             $table->double('volume')->nullable();
             $table->string('mode_volume')->nullable();
             $table->string('color')->nullable();
+            $table->string('shape')->nullable();
             $table->double('price')->nullable();
             $table->string('image_packaging')->nullable();
             $table->timestamps();

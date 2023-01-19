@@ -13,6 +13,6 @@ class PackagingSeeder extends Seeder
      */
     public function run()
     {
-        //
+        \App\Models\Packaging::factory(10)->create();
     }
 }

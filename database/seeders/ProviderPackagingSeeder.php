@@ -13,6 +13,6 @@ class ProviderPackagingSeeder extends Seeder
      */
     public function run()
     {
-        //
+        \App\Models\ProviderPackaging::factory(10)->create();
     }
 }

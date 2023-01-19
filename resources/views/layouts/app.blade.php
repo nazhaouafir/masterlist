@@ -25,8 +25,9 @@
             @livewireScripts
         <script src="{{asset('js/app.js')}}"></script>
         <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>  
-        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <x-livewire-alert::scripts />
+
+
     </body>
 </html>

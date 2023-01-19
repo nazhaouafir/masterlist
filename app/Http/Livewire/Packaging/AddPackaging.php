@@ -20,7 +20,7 @@ class AddPackaging extends Component
     use LivewireAlert;
     public $providers= [];
     public $operation_number;
-    public $packaging_name, $packaging_type, $packaging_color, $packaging_volume, $p_volume, $p_provider, $p_price, $p_date, $image_packaging;
+    public $packaging_name, $packaging_shape, $packaging_type, $packaging_color, $packaging_volume, $p_volume, $p_provider, $p_price, $p_date, $image_packaging;
     public $accessory_name, $accessory_type, $accessory_color, $a_provider, $a_price, $a_date, $image_accessory;
     public  $labeling_type,  $l_provider, $l_price, $l_date, $image_labeling;
     public $same_provider=1;
@@ -49,9 +49,7 @@ class AddPackaging extends Component
     public function updated(){
             if($this->same_provider == 1 && $this->p_provider){
                 $this->a_provider = $this->p_provider;
-            } else{
-                $this->a_provider = '';
-            }
+            } 
     }
     public function toggle_provider_accessory(){
 
@@ -154,11 +152,12 @@ class AddPackaging extends Component
         $this->validate([
             'operation_number' =>'required',
             'packaging_name' => 'required',
+            'packaging_shape'=>'required',
             'packaging_type'=>'required',
             'packaging_volume' => 'required',
             'packaging_color'=> 'required',
             'p_price'=>'required',
-            'image_packaging'=> 'required|image|max:2048',
+            'image_packaging'=> 'nullable|image|max:2048',
 
             'p_email'=> 'nullable|email',
             'p_date'=> 'nullable|date|before:today',
@@ -172,7 +171,7 @@ class AddPackaging extends Component
             'accessory_type'=>'required',
             'accessory_color'=> 'required',
             'a_price'=>'required',
-            'image_accessory'=> 'required|image|max:2048',
+            'image_accessory'=> 'nullable|image|max:2048',
 
             'a_email'=> 'nullable|email',
             'a_date'=> 'nullable|date',
@@ -182,7 +181,7 @@ class AddPackaging extends Component
 
             'labeling_type'=>'required',
             'l_price'=>'required',
-            'image_labeling'=> 'required|image|max:2048',
+            'image_labeling'=> 'nullable|image|max:2048',
 
             'l_email'=> 'nullable|email',
             'l_date'=> 'nullable|date',
@@ -204,6 +203,7 @@ class AddPackaging extends Component
             'type'=>$this->packaging_type,
             'volume'=>$this->packaging_volume,
             'mode_volume'=>$this->p_volume,
+            'packaging_shape'=>$this->packaging_shape,
             'color'=>$this->packaging_color,
             'price'=>$this->p_price,
             'image_packaging'=>$this->image_packaging? $this->image_packaging->store('packagings', 'public') : null,
@@ -294,6 +294,7 @@ class AddPackaging extends Component
         }
     }
     public function save_accessory_provider(){
+
         $this->validate([
             'a_company_name'=>'required',
             'a_contact_name'=>'required',
@@ -316,7 +317,7 @@ class AddPackaging extends Component
             $this->toggle_provider_accessory();
             $this->providers = Provider::with('packagings','labelings','accessories')->get();
             $this->a_provider=  $provider->id;
-            $this->alert('success', 'Provider Created !', [
+            $this->alert('success', 'Product Created !', [
                 'position' => 'center',
                 'timer' => 3000,
                 'toast' => true,
@@ -335,6 +336,7 @@ class AddPackaging extends Component
         $this->l_email='';
 
     }
+
     // public function hello()
     // { 
     //      $this->alert('success', 'Hello!', [

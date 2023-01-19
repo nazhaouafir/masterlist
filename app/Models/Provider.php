@@ -20,14 +20,14 @@ class Provider extends Model
     ];
 
     public  function packagings(){
-        return $this->belongsToMany(Packaging::class, 'provider_packagings');
+        return $this->belongsToMany(Packaging::class, 'provider_packagings')->withPivot('price', 'date_received');
     }
 
     public  function labelings(){
-        return $this->belongsToMany(Labeling::class, 'provider_lebelings');
+        return $this->belongsToMany(Labeling::class, 'provider_lebelings')->withPivot('price', 'date_received');
     }
     
     public  function accessories(){
-        return $this->belongsToMany(Accessory::class, 'provider_accessories');
+        return $this->belongsToMany(Accessory::class, 'provider_accessories')->withPivot('price', 'date_received');
     }
 }

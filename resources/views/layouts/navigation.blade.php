@@ -112,7 +112,7 @@
                         </li>
 
                         <li class="items-center">
-                            <a href="./settings.html"
+                            <a href="/providers-list"
                                 class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500">
                                 <i class="fas fa-tools mr-2 text-sm text-blueGray-300"></i>
                                 Search Providers
@@ -157,21 +157,6 @@
                                 class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block">
                                 <i class="fas fa-fingerprint text-blueGray-300 mr-2 text-sm"></i>
                                 Add Packaging Details
-                            </a>
-                        </li>
-
-                        <li class="items-center">
-                            <a href="../auth/register.html"
-                                class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block">
-                                <i class="fas fa-clipboard-list text-blueGray-300 mr-2 text-sm"></i>
-                                Add Accessory
-                            </a>
-                        </li>
-                        <li class="items-center">
-                            <a href="../auth/register.html"
-                                class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block">
-                                <i class="fas fa-clipboard-list text-blueGray-300 mr-2 text-sm"></i>
-                                Add Labeling
                             </a>
                         </li>
                     </ul>
