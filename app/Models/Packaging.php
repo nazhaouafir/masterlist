@@ -23,16 +23,16 @@ class Packaging extends Model
     ];
 
    public  function accessories(){
-    return $this->belongsToMany(Accessory::class,'packaging_acessories');
+        return $this->belongsToMany(Accessory::class,'packaging_accessory_labelings')->wherePivot('code');
    }
    public  function labelings(){
-    return $this->belongsToMany(Labeling::class,'packaging_labelings');
+        return $this->belongsToMany(Labeling::class,'packaging_accessory_labelings')->withPivot('code');
    }
    public  function providers(){
-    return $this->belongsToMany(Provider::class, 'provider_packagings')->withPivot('price', 'date_received');
+        return $this->belongsToMany(Provider::class, 'provider_packagings')->withPivot('price', 'date_received');
    }
    public  function operations(){
-    return $this->belongsToMany(Operation::class, 'operation_packagings');
+        return $this->belongsToMany(Operation::class, 'operation_packagings');
    }
 
 }

@@ -171,9 +171,10 @@
                   {{$item->volume}} {{$item->mode_volume}}
                 </td>
                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
-                      @foreach ($item->operations as $o)
-                          {{$o->operation_number}},
-                      @endforeach  
+                      @foreach ($item->labelings as $a)
+                          {{$a->pivot->code}},
+                      @endforeach 
+                      {{-- {{$item->labelings }} --}}
                 </td>
                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md whitespace-nowrap p-4">
                   <span class="cursor-pointer"

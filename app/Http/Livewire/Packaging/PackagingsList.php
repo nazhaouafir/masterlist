@@ -38,7 +38,7 @@ class PackagingsList extends Component
     public function render()
     {
         return view('livewire.packaging.packagings-list',[
-            'packagings'=>Packaging::search('name', $this->search)->type('type', $this->type)->color('color',$this->color)->volume('volume',$this->volume)->volume('mode_volume',$this->modevolume)->paginate(5),
+            'packagings'=>Packaging::search('name', $this->search)->type('type', $this->type)->color('color',$this->color)->volume('volume',$this->volume)->volume('mode_volume',$this->modevolume)->paginate(10),
         ])->layout('layouts.app');
     }
 }

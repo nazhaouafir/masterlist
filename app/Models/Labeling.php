@@ -15,8 +15,8 @@ class Labeling extends Model
         'price'
     ];
 
-    public function packaging(){
-        return $this->hasMany(packaging::class);
+    public function packagings(){
+        return $this->belongsToMany(Packaging::class,'packaging_accessory_labelings')->withPivot('code');
     }
     public  function providers(){
         return $this->belongsToMany(Provider::class, 'provider_lebelings')->withPivotValue('price','date_received');

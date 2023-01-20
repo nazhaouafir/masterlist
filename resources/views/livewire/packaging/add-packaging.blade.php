@@ -8,7 +8,7 @@
                             Add New Packaging
                         </h6>
                         <button
-                                
+                                wire:click='reference'
                             class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                             type="button">
                             Annuler
@@ -75,7 +75,9 @@
                                         <option value=""></option>
                                         <option value="Glass">Glass</option>
                                         <option value="Plastic">Plastic</option>
-                                        <option value="Metallic">Metallic</option>
+                                        <option value="Metalic">Metalic</option>
+                                        <option value="Alluminum">Alluminum</option>
+                                        <option value="Paper">Paper</option>
                                     </select>
                                     @error('packaging_type')
                                     <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -129,10 +131,10 @@
                                             class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
                                             rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                                                 <option value=""></option>
-                                                <option value="Gramme">Gramme</option>
+                                                <option value="G">G</option>
                                                 <option value="Kg">Kg</option>
                                                 <option value="Litre">Litre</option>
-                                                <option value="Ml">Ml</option>    
+                                                <option value="ml">ml</option>    
                                         </select>
                                    
                                     </div>
@@ -379,6 +381,7 @@
                                         <option value="Pipette">Pipette</option>
                                         <option value="Spray">Spray</option>
                                         <option value="Pump">Pump</option>
+                                        <option value="Dropper">Dropper</option>
                                         <option value="Cover">Cover</option>
                                     </select>
                             @error('accessory_name')

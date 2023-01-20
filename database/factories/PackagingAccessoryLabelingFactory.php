@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class PackagingLabelingFactory extends Factory
+class PackagingAccessoryLabelingFactory extends Factory
 {
     /**
      * Define the model's default state.
