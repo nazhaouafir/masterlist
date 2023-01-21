@@ -311,7 +311,7 @@ class AddPackaging extends Component
     {
 
         $this->validate([
-            'operation_number' => 'required',
+            'operation_number' => 'nullable',
             'packaging_name' => 'required',
             'packaging_shape' => 'required',
             'packaging_type' => 'required',
@@ -429,7 +429,7 @@ class AddPackaging extends Component
 
                         break;
                     case ('Spray'):
-                        $pckg= 'SP-';
+                        $pckg= 'SPY-';
 
 
                         break;
@@ -445,7 +445,7 @@ class AddPackaging extends Component
 
                         break;
                     default:
-                        $pckg= 'Bot-';
+                        $pckg= '';
                 }
                 break;
             case ('Jar'):
@@ -526,11 +526,15 @@ class AddPackaging extends Component
             'code'=> $code
         ]);
         ///////////////////////
-        $this->alert('success', 'Product Created !', [
+        if($packaging_accesssory_labeling){
+           $this->alert('success', 'Product Created !', [
             'position' => 'center',
             'timer' => 3000,
             'toast' => true,
-        ]);
+                ]);
+                return redirect()->to('/packagingsList');  
+        }
+       
     }
     public function save_labeling_provider()
     {

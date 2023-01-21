@@ -91,10 +91,25 @@
                                             htmlfor="grid-password">
                                             Packaging Color Ex: (Black, clear...)
                                         </label>
-                                        <input type="text"
-                                            wire:model='packaging_color'
-                                            class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow 
-                                            focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                        <select type="text" wire:model='packaging_color'
+                                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
+                                        rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                            <option value=""></option>
+                                            <option value="White">White</option>
+                                            <option value="Black">Black</option>
+                                            <option value="Silver">Silver</option>
+                                            <option value="Gold">Gold</option>
+                                            <option value="Pink">Pink</option>
+                                            <option value="Red">Red</option>
+                                            <option value="Purple">Purple</option>
+                                            <option value="Blue">Blue</option>
+                                            <option value="Green">Green</option>
+                                            <option value="Orange">Orange</option>
+                                            <option value="Yellow">Yellow</option>
+                                            <option value="Brown">Brown</option>
+                                            <option value="Beige">Beige</option>
+                                            <option value="Clear (transparent)">Clear (transparent)</option>
+                                        </select>
                                         @error('packaging_color')
                                         <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                                         @enderror
@@ -414,9 +429,25 @@
                                         htmlfor="grid-password">
                                         Accessory Color (Black, clear)
                                     </label>
-                                    <input type="text" wire:model='accessory_color'
-                                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow 
-                                        focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    <select type="text" wire:model='accessory_color'
+                                    class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white 
+                                    rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                        <option value=""></option>
+                                        <option value="White">White</option>
+                                        <option value="Black">Black</option>
+                                        <option value="Silver">Silver</option>
+                                        <option value="Gold">Gold</option>
+                                        <option value="Pink">Pink</option>
+                                        <option value="Red">Red</option>
+                                        <option value="Purple">Purple</option>
+                                        <option value="Blue">Blue</option>
+                                        <option value="Green">Green</option>
+                                        <option value="Orange">Orange</option>
+                                        <option value="Yellow">Yellow</option>
+                                        <option value="Brown">Brown</option>
+                                        <option value="Beige">Beige</option>
+                                        <option value="Clear (transparent)">Clear (transparent)</option>
+                                    </select>
                                     @error('accessory_color')
                                         <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                                     @enderror
