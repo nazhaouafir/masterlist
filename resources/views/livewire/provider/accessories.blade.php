@@ -4,7 +4,7 @@
             <div class="rounded-t bg-white mb-0 px-6 py-6">
                 <div class="text-center flex justify-between">
                     <h6 class="text-blueGray-700 text-xl font-bold">
-                        ID packaging : {{$packaging->id}}
+                        Providers Of accessory : {{$accessory->id}}, ({{$accessory->name}} / {{$accessory->type}} / {{$accessory->color}})
                     </h6>
                     <button wire:click.prevent="$emit('closeModal')"
                         class="bg-red-500 text-white active:bg-red-500
@@ -59,7 +59,7 @@
                         </thead>
                         <tbody>
         
-                            @foreach ($packaging->providers as $provider)
+                            @foreach ($accessory->providers as $provider)
         
                             <tr>
                                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md p-4">

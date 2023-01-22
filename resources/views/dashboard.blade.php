@@ -3,7 +3,7 @@
        
     </x-slot>  --}}
     
-     {{-- @livewire('packaging.add-packaging') --}}
+     @livewire('packaging.packagings-list')
     
 </x-app-layout>
 

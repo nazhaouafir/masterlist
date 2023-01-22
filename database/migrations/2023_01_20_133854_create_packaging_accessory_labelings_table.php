@@ -15,9 +15,9 @@ class CreatePackagingAccessoryLabelingsTable extends Migration
     {
         Schema::create('packaging_accessory_labelings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('accessory_id')->constrained('accessories');
+            $table->foreignId('accessory_id')->nullable()->constrained('accessories');
             $table->foreignId('packaging_id')->constrained('packagings');
-            $table->foreignId('labeling_id')->constrained('labelings');
+            $table->foreignId('labeling_id')->nullable()->constrained('labelings');
             $table->string('code')->nullable();
             $table->timestamps();
         });

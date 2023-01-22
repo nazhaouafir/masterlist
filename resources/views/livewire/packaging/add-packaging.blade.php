@@ -1,4 +1,4 @@
-<div class="px-4 md:px-8 mx-10 w-full mt-8">
+<div class="px-4 md:px-2 mx-2 w-full mt-8">
     <div class="flex flex-wrap">
         <div class="w-full lg:w-12/12 px-4">
             <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
@@ -941,7 +941,8 @@
                                     <div class="text-center mt-6 ">
                                         <button
                                         wire:click.prevent='create_product'
-                                          class="bg-blueGray-800  text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+                                          class="bg-blueGray-800  text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow 
+                                          hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                                           type="submit">
                                          Enregistre
                                         </button>

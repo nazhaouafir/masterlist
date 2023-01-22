@@ -110,62 +110,8 @@ class AddPackaging extends Component
             return $operation;
     }
 
-    public function create_packaging()
-    {
 
-        $packaging = Packaging::create([
-            'name' => $this->packaging_name,
-            'type' => $this->packaging_type,
-            'volume' => $this->packaging_volume,
-            'color' => $this->packaging_color,
-            'price' => $this->p_price,
-            'image_packaging' => $this->image_packaging ? $this->image_packaging->store('packagings', 'public') : null,
-        ]);
-        $packaging->providers()
-            ->attach(
-                $packaging->id,
-                [
-                    'price' => $this->p_price,
-                    'date_received' => $this->p_date
-                ]
-            );
-    }
-    public function create_accessory()
-    {
-
-        $accessory = Accessory::create([
-            'name' => $this->accessory_name,
-            'type' => $this->accessory_type,
-            'color' => $this->accessory_color,
-            'price' => $this->p_price,
-            'image_accessory' => $this->image_accessory ? $this->image_accessory->store('accessories', 'public') : null,
-        ]);
-        $accessory->providers()
-            ->attach(
-                $accessory->id,
-                [
-                    'price' => $this->p_price,
-                    'date_received' => $this->p_date
-                ]
-            );
-    }
-    public function create_labeling()
-    {
-
-        $labeling = Labeling::create([
-            'type' => $this->labeling_type,
-            'price' => $this->p_price,
-            'image_labeling' => $this->image_labeling ? $this->image_labeling->store('labelings', 'public') : null,
-        ]);
-        $labeling->providers()
-            ->attach(
-                $labeling->id,
-                [
-                    'price' => $this->p_price,
-                    'date_received' => $this->p_date
-                ]
-            );
-    }
+ 
     public function reference()
     {
         $this->validate([
@@ -281,35 +227,12 @@ class AddPackaging extends Component
         }
         $code = $packaging . '' . $type . '-' . $this->packaging_volume . '' . $this->p_volume . '' . $labeltype . '/';
     }
-    public function unique_packaging()
-    {
 
-        $this->validate([
-            'packaging_name' => 'required',
-            'packaging_shape' => 'required',
-            'packaging_type' => 'required',
-            'packaging_volume' => 'required',
-            'packaging_color' => 'required',
-        ]);
-        // Retrieve flight by name or create it with the name, delayed, and arrival_time attributes...
-        $packaging = Packaging::firstOrCreate(
-            [
-                'name' => $this->packaging_name,
-                'type' => $this->packaging_type,
-                'volume' => $this->packaging_volume,
-                'type' => $this->packaging_type,
-                'mode_volume' => $this->p_volume,
-                'shape' => $this->packaging_shape,
-
-                'color' => $this->packaging_color
-            ],
-
-        );
-        dd($packaging);
-    }
     public function create_product()
     {
 
+        $labeling='';
+        $accessory='';
         $this->validate([
             'operation_number' => 'nullable',
             'packaging_name' => 'required',
@@ -321,18 +244,19 @@ class AddPackaging extends Component
             'image_packaging' => 'nullable|image|max:2048',
 
             'p_email' => 'nullable|email',
-            'p_date' => 'nullable|date|before:today',
+            'p_date' => 'nullable|date',
             'p_phone_1' => 'nullable',
             'p_phone_2' => 'nullable',
             'p_adresse' => 'nullable',
-
             'p_provider' => 'required',
             'p_volume' => 'required',
-            'accessory_name' => 'required',
-            'accessory_type' => 'required',
-            'accessory_color' => 'required',
-            'a_price' => 'required',
+
+            'accessory_name' => 'nullable',
+            'accessory_type' => 'nullable',
+            'accessory_color' => 'nullable',
+            'a_price' => 'nullable',
             'image_accessory' => 'nullable|image|max:2048',
+            'a_provider'=>'nullable',
 
             'a_email' => 'nullable|email',
             'a_date' => 'nullable|date',
@@ -340,8 +264,8 @@ class AddPackaging extends Component
             'a_phone_2' => 'nullable',
             'a_adresse' => 'nullable',
 
-            'labeling_type' => 'required',
-            'l_price' => 'required',
+            'labeling_type' => 'nullable',
+            'l_price' => 'nullable',
             'image_labeling' => 'nullable|image|max:2048',
 
             'l_email' => 'nullable|email',
@@ -349,8 +273,7 @@ class AddPackaging extends Component
             'l_phone_1' => 'nullable',
             'l_phone_2' => 'nullable',
             'l_adresse' => 'nullable',
-
-            'l_provider' => 'required',
+            'l_provider' => 'nullable',
 
         ]);
 
@@ -366,7 +289,6 @@ class AddPackaging extends Component
             'mode_volume' => $this->p_volume,
             'shape' => $this->packaging_shape,
             'color' => $this->packaging_color,
-           
             'image_packaging' => $this->image_packaging ? $this->image_packaging->store('packagings', 'public') : null,
         ]);
 
@@ -376,40 +298,51 @@ class AddPackaging extends Component
             'price'=>$this->p_price,
             'date_received'=>$this->p_date
         ]);
-
-
         ///////////////////////////
-
-        $accessory = Accessory::firstOrCreate([
-            'name' => $this->accessory_name,
-            'type' => $this->accessory_type,
-            'color' => $this->accessory_color,
-            
-            'image_accessory' => $this->image_accessory ? $this->image_accessory->store('accessories', 'public') : null,
-        ]);
-
-
-
-        $provider_accessory= ProviderAccessory::firstOrCreate([
-            'accessory_id'=>$accessory->id,
-            'provider_id'=>$this->a_provider,
-            'price'=>$this->a_price,
-            'date_received'=>$this->a_date
-        ]);
+        if($this->accessory_name){
+            $this->validate([
+                'accessory_name' => 'required',
+                'accessory_type' => 'required',
+                'accessory_color' => 'required',
+                'a_price' => 'required',
+                'image_accessory' => 'nullable|image|max:2048',
+                'a_provider'=>'required',
+            ]);
+            $accessory = Accessory::firstOrCreate([
+                'name' => $this->accessory_name,
+                'type' => $this->accessory_type,
+                'color' => $this->accessory_color,
+                'image_accessory' => $this->image_accessory ? $this->image_accessory->store('accessories', 'public') : null,
+            ]);
+            $provider_accessory= ProviderAccessory::firstOrCreate([
+                'accessory_id'=>$accessory->id,
+                'provider_id'=>$this->a_provider,
+                'price'=>$this->a_price,
+                'date_received'=>$this->a_date
+            ]);
+        }
+ 
 
         ///////////////////////////////
-        $labeling = Labeling::firstOrCreate([
-            'type' => $this->labeling_type,
+        if($this->labeling_type){
+            $labeling = Labeling::firstOrCreate([
+                'type' => $this->labeling_type,
+                'image_labeling' => $this->image_labeling ? $this->image_labeling->store('labelings', 'public') : null,
+            ]);
+            if($labeling){
+                $this->validate([
+                    'l_provider' => 'resuired',
+                ]);
+               $provider_labeling= ProviderLebeling::firstOrCreate([
+                'labeling_id'=>$labeling->id,
+                'provider_id'=>$this->l_provider,
+                'price'=>$this->l_price,
+                'date_received'=>$this->l_date
+            ]); 
+            }
             
-            'image_labeling' => $this->image_labeling ? $this->image_labeling->store('labelings', 'public') : null,
-        ]);
-
-        $provider_labeling= ProviderLebeling::firstOrCreate([
-            'labeling_id'=>$labeling->id,
-            'provider_id'=>$this->l_provider,
-            'price'=>$this->l_price,
-            'date_received'=>$this->l_date
-        ]);
+        }
+       
            
 
      
@@ -517,12 +450,18 @@ class AddPackaging extends Component
             default:
                 $labeltype = '';
         }
-        $code = $pckg. '' . $type . '-' . $this->packaging_volume . '' . $this->p_volume . '' . $labeltype . '/'.$packaging->id.'-'.$accessory->id;
+        $access= '';
+        if($accessory){
+            $accss= $accessory->id;
+        }else{
+            $access= '';
+        }
+        $code = $pckg. '' . $type . '-' . $this->packaging_volume . '' . $this->p_volume . '' . $labeltype . '/'.$packaging->id.'-'.$access;
            /////////////////////
            $packaging_accesssory_labeling = PackagingAccessoryLabeling::firstOrCreate([
-            'accessory_id' => $accessory->id,
+            'accessory_id' => $accessory?$accessory->id:null,
             'packaging_id' => $packaging->id,
-            'labeling_id' => $labeling->id,
+            'labeling_id' => $labeling?$labeling->id:null,
             'code'=> $code
         ]);
         ///////////////////////
@@ -543,7 +482,7 @@ class AddPackaging extends Component
             'l_contact_name' => 'required',
             'l_adresse' => 'required',
             'l_phone_1' => 'required',
-            'l_phone_2' => 'required',
+            'l_phone_2' => 'nullable',
             'l_email' => 'required',
         ]);
         $provider = Provider::firstOrCreate([
@@ -575,7 +514,7 @@ class AddPackaging extends Component
             'a_contact_name' => 'required',
             'a_adresse' => 'required',
             'a_phone_1' => 'required',
-            'a_phone_2' => 'required',
+            'a_phone_2' => 'nullable',
             'a_email' => 'required',
         ]);
         $provider = Provider::firstOrCreate([
